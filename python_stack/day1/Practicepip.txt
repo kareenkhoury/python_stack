@@ -1,0 +1,67 @@
+1)pip list (Pip is the package manager )
+Package    Version
+---------- -------
+pip        23.2.1
+setuptools 65.5.0
+
+2)deactivate
+my environment not active
+
+3)pip3 list
+pip3 list
+Package    Version
+---------- -------
+pip        23.2.1
+setuptools 65.5.0
+
+4)re-activate the virtualenv
+call py\Scripts\activate
+
+5)pip install Django==2.2.4
+Collecting Django==2.2.4
+  Downloading Django-2.2.4-py3-none-any.whl (7.5 MB)
+     ---------------------------------------- 7.5/7.5 MB 3.9 MB/s eta 0:00:00
+Collecting pytz (from Django==2.2.4)
+  Obtaining dependency information for pytz from https://files.pythonhosted.org/packages/32/4d/aaf7eff5deb402fd9a24a1449a8119f00d74ae9c2efa79f8ef9994261fc2/pytz-2023.3.post1-py2.py3-none-any.whl.metadata
+  Downloading pytz-2023.3.post1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting sqlparse (from Django==2.2.4)
+  Downloading sqlparse-0.4.4-py3-none-any.whl (41 kB)
+     ---------------------------------------- 41.2/41.2 kB ? eta 0:00:00
+Downloading pytz-2023.3.post1-py2.py3-none-any.whl (502 kB)
+   ---------------------------------------- 502.5/502.5 kB 6.3 MB/s eta 0:00:00
+Installing collected packages: pytz, sqlparse, Django
+Successfully installed Django-2.2.4 pytz-2023.3.post1 sqlparse-0.4.4
+(Downloading Django)
+
+6)pip freeze
+Django==2.2.4
+pytz==2023.3.post1
+sqlparse==0.4.4
+
+pip list
+Package    Version
+---------- ------------
+Django     2.2.4
+pip        23.2.1
+pytz       2023.3.post1
+setuptools 65.5.0
+sqlparse   0.4.4
+
+(the differents are pip        23.2.1 || setuptools 65.5.0
+
+7)pip freeze > k.txt 
+nothing happened
+
+8)pip uninstall Django
+Found existing installation: Django 2.2.4
+Uninstalling Django-2.2.4:
+  Would remove:
+    c:\users\kk2\py\lib\site-packages\django-2.2.4.dist-info\*
+    c:\users\kk2\py\lib\site-packages\django\*
+    c:\users\kk2\py\scripts\django-admin.exe
+    c:\users\kk2\py\scripts\django-admin.py
+Proceed (Y/n)? y
+  Successfully uninstalled Django-2.2.4
+
+9)pip show Django
+WARNING: Package(s) not found: Django
