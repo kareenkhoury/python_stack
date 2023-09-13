@@ -40,7 +40,29 @@ first_name - Michael, last_name - Jordan
 first_name - John, last_name - Rosales
 first_name - Mark, last_name - Guillen
 first_name - KB, last_name - Tonel
+students = [
+         {'first_name':  'Michael', 'last_name' : 'Jordan'},
+         {'first_name' : 'John', 'last_name' : 'Rosales'},
+         {'first_name' : 'Mark', 'last_name' : 'Guillen'},
+         {'first_name' : 'KB', 'last_name' : 'Tonel'}
+    ]
+def iterateDictionary(students):
+    for i in range(len(students)):
+        print("first_name - " +students[i]['first_name'] +", " + "last_name - " + students[i]['last_name'])
+iterateDictionary(students)
 
+=========================================
+def iterateDictionary(students):
+    for student in students:
+        print("first_name - " +student['first_name'] +", " + "last_name - " + student['last_name'])
+iterateDictionary(students)
+3)Get Values From a List of Dictionaries
+
+
+def iterateDictionary(students, key_name):
+    for student in students:
+        print(key_name+" - " +student[key_name])
+iterateDictionary(students, "last_name")
 
 4)
 Iterate Through a Dictionary with List Values
@@ -72,6 +94,6 @@ Minh
 Devon
 def printInfo(some_dict):
     for key, value in some_dict.items():
-        print(f"{len(value)}")
+        print(f"{len(value)}" + key)
         for item in value:
             print(item)
