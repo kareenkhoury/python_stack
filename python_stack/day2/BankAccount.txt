@@ -1,0 +1,43 @@
+class BankAccount:
+    def __init__(self, int_rate, balance):
+        self.int_rate = int_rate
+        self.balance = balance
+
+    def make_deposit(self, amount):
+        self.balance += amount
+
+    def make_withdrawal(self, amount):
+        if self.balance < 0:  
+            print("Charging a $5 fee")
+            
+        self.balance -= amount
+
+    def transfer_money(self, amount,name):
+        self.balance += amount
+        self.name = name  
+
+    def display_user_balance(self):
+        print(f"Rate: {self.int_rate}, Balance: ${self.balance}")
+
+    def yield_interest(self):
+        self.balance += self.balance * self.int_rate
+
+account1 = BankAccount(0.1, 0)
+account2 = BankAccount(0.2, 0)
+
+account1.make_deposit(100)
+account1.make_deposit(18)
+account1.make_deposit(200)
+account1.make_withdrawal(10)
+account1.yield_interest()
+account1.display_user_balance()
+
+
+account2.make_deposit(100)
+account2.make_deposit(18)
+account2.make_withdrawal(10)
+account2.make_withdrawal(110)
+account2.make_withdrawal(105)
+account2.make_withdrawal(130)
+account2.yield_interest()
+account2.display_user_balance()

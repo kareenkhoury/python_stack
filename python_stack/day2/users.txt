@@ -1,0 +1,43 @@
+class User:
+    def __init__(self, name, email_address):
+        self.name = name
+        self.email = email_address
+        self.account_balance = 0
+
+    def make_deposit(self, amount):  # This method should be indented under the class
+        self.account_balance += amount
+
+    def make_withdrawal(self, amount):
+        self.account_balance -= amount
+    
+    def transfer_money(self, amount,name):
+        self.account_balance += amount
+        self.name = name
+
+    def display_user_balance(self):
+        print(f"User: {self.name}, Balance: ${self.account_balance}")
+
+guido = User("Guido van Rossum", "guido@python.com")
+monty = User("Monty Python", "monty@python.com")
+rami = User("Rami Python", "rami@python.com")
+guido.make_deposit(100)
+guido.make_deposit(18)
+guido.make_deposit(200)
+guido.make_withdrawal(10)
+guido.display_user_balance()
+
+monty.make_deposit(340)
+monty.make_deposit(178)
+monty.make_withdrawal(150)
+monty.make_withdrawal(10)
+monty.display_user_balance()
+
+rami.make_deposit(400)
+rami.make_withdrawal(150)
+rami.make_withdrawal(10)
+rami.make_withdrawal(170)
+rami.display_user_balance()
+
+monty.transfer_money(10,rami)
+rami.display_user_balance()
+monty.display_user_balance()
