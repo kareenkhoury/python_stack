@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Index Page</h1>
+    <h3>Create a User</h3>
+        <form action='/users' method='post'>
+        Name: <input type='text' name='name'> <br>
+        Email: <input type='text' name='email'><br>
+      <div>
+            <label>Gender Identity: </label><br>
+            <input type="radio" name="font" value="male" id="one">
+            <label for="male">Male</label>
+            <input type="radio" name="font" value="female" id="two">
+            <label for="female">Female</label>
+            <input type="radio" name="font" value="nonbinary" id="three">
+            <label for="nonbinary">Non-binary</label>
+            <input type="radio" name="font" value="not" id="four">
+            <label for="not">I prefer not to answer</label>
+        </div>
+    
+        <div>
+            <label>A shorter description about myself: </label>
+            <br>
+          <textarea name="comment" cols="50" rows="3"></textarea>
+        </div>
+        <div>
+            <label>Favorite Language: </label>
+            <select name="language">
+                <option value="Almonds">JavaScript</option>
+                <option value="web">Web</option>
+                <option value="data base">data base</option>
+            </select>
+        </div>
+        <br>
+        <input type='submit' value='create user'>
+    </form>
+  
+    
+
+</body>
+</html>
+<style>
+    body{
+        text-align: center;
+        border: 1px;
+    }
+</style>
