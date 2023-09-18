@@ -1,0 +1,27 @@
+<h1>Index Page</h1>
+<h3>Create a User</h3>
+<form action='/result' method='post'>
+    {% csrf_token %}
+    Name: <input type='text' name='name'>
+    Email: <input type='text' name='email'>
+    <div>
+        <label>Gender Identity: </label><br>
+        <input type="radio" name="font" value="male" id="one">
+        <label for="male">Male</label>
+        <input type="radio" name="font" value="female" id="two">
+        <label for="female">Female</label>
+        <input type="radio" name="font" value="nonbinary" id="three">
+        <label for="nonbinary">Non-binary</label>
+        <input type="radio" name="font" value="not" id="four">
+        <label for="not">I prefer not to answer</label>
+    </div>
+    <div>
+        <label>Favorite Language: </label>
+        <select name="language">
+            <option value="Almonds">JavaScript</option>
+            <option value="web">Web</option>
+            <option value="data base">data base</option>
+        </select>
+    </div>
+    <button type='submit'>Create User</button>
+</form>
