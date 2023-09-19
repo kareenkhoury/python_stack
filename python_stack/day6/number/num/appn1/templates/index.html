@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guessing Game</title>
+</head>
+<body>
+    <h1>Guess the Number</h1>
+    
+   
+    <p>{{ message }}</p>
+   
+    
+    <form method="post" action="/check_guess">
+        {% csrf_token %}
+        <label>Enter your guess (1-100):</label>
+        <input type="number"  name="guess">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
