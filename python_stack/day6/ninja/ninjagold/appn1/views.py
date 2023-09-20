@@ -24,6 +24,11 @@ def process_money(request):
             gold = random.randrange(0, 51)
             gold =request.session['gold']
             request.session['activities'] = gold
-               
-
+      
     return redirect('/')
+def result(request): 
+    gold = request.POST['gold']
+    context = {
+    	"gold_on_template" : gold,	
+    }
+    return render(request,"index.html",context)
