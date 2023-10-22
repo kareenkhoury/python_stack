@@ -3,11 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>Ninja Gold</title>
-   
+   <style>
+    form{
+        border:1px solid black;
+        padding:10px;
+        margin:0 10px;
+    }
+    .activities{
+        border:1px solid black;
+        padding:10px;
+        margin:20px 10px;
+    }
+   </style>
   </head>
   <body>
-      <div>
-          <p> Your GOLD: {{request.session}} </p>
+        <p> Your GOLD: <span style="border:1px solid black; padding:2px 40px;">{{request.session.gold}}</span> </p>
+      <div style="display: flex;
+    justify-content: space-between;">
           <form action="/process_money" method="POST">
           {% csrf_token %}
               <h3> Farm </h3>
@@ -33,11 +45,16 @@
             {% csrf_token %}
                <h3> Quest </h3>
                <p>(earns 0-50 gold)</p>
-               <input type="hidden" name="place" value="house">
+               <input type="hidden" name="place" value="quest">
                <button type="submit"> Find Gold!! </button>
             </form>
-          <h4> activities </h4>
           {{ gold }}
       </div>
+        <h4> activities </h4>
+        <div class="activities">
+            {% for log in request.session.logs %}
+                {{log|safe}}
+            {% endfor %}
+        </div>
   </body>
   </html>

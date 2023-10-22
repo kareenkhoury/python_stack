@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration & Log In</title>
+    
+
+<body>
+
+
+    <div>
+        <form action="/registration" method="post">
+            {%csrf_token%}
+            <h2>Registration</h2>
+            <table>
+                <tr>
+                    <td>First Name </td>
+                    <td><input type="text" name="first_name"></td>
+                </tr>
+                <br>
+                <tr>
+                    <td>last Name </td>
+                    <td><input type="text" name="last_name"></td>
+                </tr>
+                <tr>
+                    <td>Email </td>
+                    <td><input type="email" name="email"></td>
+                </tr>
+                <tr>
+                    <td>password </td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td>Confirm PW </td>
+                    <td><input type="password" name="confirm"></td>
+                </tr>
+                </tr>
+            </table>
+            <input class="button" type="submit" value="Register">
+        </form>
+
+        <form action="/login" method="post">
+            {%csrf_token%}
+            <h2>Login</h2>
+            <table>
+                <tr>
+                    <td>Email </td>
+                    <td><input type="email" name="email"></td>
+                </tr>
+                <br>
+                <tr>
+                    <td>password </td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+            </table>
+            <input class="button" type="submit" value="Log In">
+        </form>
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+</body>
+
+</html>

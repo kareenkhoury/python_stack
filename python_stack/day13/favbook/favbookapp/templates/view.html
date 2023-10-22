@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites Books</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h2>Welcome, {{user.first_name}}!</h2>
+            <a href="/logout">Log out</a>
+        </nav>
+    </header>
+    <hr>
+    <main>
+        <div>
+            {%if user.id != book.uploaded_by.id%}
+            <h4>{{book.uploaded_by.first_name}}</h4>
+            <h4>{{book.created_at}}</h4>
+            <h4>{{book.updated_at}}</h4>
+            <h4>{{book.description}}</h4>
+            {%else%}
+            <form action="/update/{{book.id}}" method="post">
+                {%csrf_token%}
+                <p><input type="text" name="title" value="{{book.title}}"></p>
+                <p>Added by : {{user.first_name}} {{user.last_name}}</p>
+                <p>Added on : {{book.created_at}}</p>
+                <p>Last updated on :{{book.updated_at}}</p>
+                <p>Description :<input type="textarea" name="description" value="{{book.description}}"></p>
+                <p><input type="submit" value="Update"><button><a href="/delete/{{book.id}}">Delete</a></button></p>
+            </form>
+            {%endif%}
+        </div>
+        <div>
+            <ul>Users Who Like This Book:
+                {%for u in book.users_who_like.all%}
+                <li>{{u.first_name}} {{u.last_name}}
+                    {%endfor%}
+                </li>
+            </ul>
+            {%if book in user.liked_books.all%}
+            <a href="/unfavorite/{{book.id}}">Un-Favorite</a>
+            {%else%}
+            <a href="/addfav/{{book.id}}/{{user.id}}">Add to Favorites</a>
+            {%endif%}
+        </div>
+    </main>
+</body>
+
+</html>

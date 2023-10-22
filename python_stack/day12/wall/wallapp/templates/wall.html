@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall page</title>
+</head>
+
+<body>
+    <nav>
+        <h3>CodingDojo Wall</h3>
+        <ul>
+            <li>Welcome {{user.first_name}}</li>
+            <li><a href="/">Log out</a></li>
+        </ul>
+    </nav>
+
+    <div>
+        <main>
+            <form action="/clickpost/{{user.id}}" method="post">
+                {%csrf_token%}
+                <h4>Post a Message</h4>
+                <input type="textarea" name="message">
+                <input type="hidden" name="user" value="{{user.id}}">
+                <br>
+                <input type="submit" name="post" value="Post a Message">
+            </form>
+
+            {%for message in allmessages%}
+            <p>{{message.user.first_name}} {{message.user.last_name}} {{message.user.created_at}}
+            {%if message.user.id == user.id %}
+                <a href="/delete/{{user.id}}">delete message</a>
+            {%endif%}</p>
+            <p>{{message.message}}</p>
+
+            {% for comment in message.comments.all %}
+            <p>{{comment.user.first_name}} {{comment.user.last_name}} - {{comment.created_at}}</p>
+            <p>{{comment.comment}} </p>
+            {%endfor%}
+            <form action="clickcomment" method="post">
+                {%csrf_token%}
+                <h4>Post a comment</h4>
+                <input type="textarea" name="comment">
+                <input type="hidden" name="message" value="{{message.id}}">
+                <input type="hidden" name="user" value="{{user.id}}">
+                <br>
+                <input type="submit" name="post" value="Post a comment">
+            </form>
+            {%endfor%}
+
+        </main>
+    </div>
+
+</body>
+
+</html>

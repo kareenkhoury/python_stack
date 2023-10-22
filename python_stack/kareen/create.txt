@@ -1,0 +1,73 @@
+type nul > for_loop_basic1.py
+python for_loop_basic1.py
+
+http://localhost:5000/
+from flask import Flask  # Import Flask to allow us to create our app
+app = Flask(__name__)    # Create a new instance of the Flask class called "app"
+@app.route('/')          # The "@" decorator associates this route with the function immediately following
+def hello_world():
+    return 'Hello kareen  World!'  # Return the string 'Hello World!' as a response
+if __name__=="__main__":   # Ensure this file is being run directly and not from a different module    
+   app.run(debug=True)
+
+
+
+http://127.0.0.1:5000
+
+from flask import Flask  # Import Flask to allow us to create our app
+app = Flask(__name__)    # Create a new instance of the Flask class called "app"
+@app.route('/')          # The "@" decorator associates this route with the function immediately following
+def hello_world():
+    return 'Hello World!'  # Return the string 'Hello World!' as a response
+    
+
+@app.route('/success')
+def success():
+  return "success"
+
+
+@app.route('/hello/<name>') # for a route '/hello/____' anything after '/hello/' gets passed as a variable 'name'
+def hello(name):
+    print(name)
+    return "Hello, " + name
+
+@app.route('/users/<username>/<id>') # for a route '/users/____/____', two parameters in the url get passed as username and idcopy
+def show_user_profile(username, id):
+    print(username)
+    print(id)
+    return "username: " + username + ", id: " + id
+
+if __name__=="__main__":   # Ensure this file is being run directly and not from a different module    
+   app.run(debug=True)
+
+////////////////////////////////////////////////////
+from flask import Flask  # Import Flask to allow us to create our app
+app = Flask(__name__)    # Create a new instance of the Flask class called "app"
+@app.route('/')          # The "@" decorator associates this route with the function immediately following
+def hello_world():
+    return 'Hello World!'  # Return the string 'Hello World!' as a response
+    
+
+@app.route('/success')
+def success():
+  return "success"
+
+@app.route('/dojo')
+def dojo():
+  return "Dojo"
+
+
+@app.route('/say/<name>') # for a route '/hello/____' anything after '/hello/' gets passed as a variable 'name'
+def say(name):
+    print(name)
+    return "Hi " + name
+
+@app.route('/users/<username>/int(id)') 
+def show_user_profile(username, id):
+    print(id*username)
+    
+    return id*username
+
+if __name__=="__main__":   # Ensure this file is being run directly and not from a different module    
+   app.run(debug=True)
+

@@ -1,0 +1,104 @@
+1)Create 5 books with the following names: C Sharp, Java, Python, PHP, Ruby
+new_book = books.objects.create(title="C Sharp",desc="tttt")
+new_book = books.objects.create(title="Java",desc="zzzz")
+new_book = books.objects.create(title="Python",desc="uuuu")
+new_book = books.objects.create(title="PHP",desc="iiii")
+new_book = books.objects.create(title="Ruby",desc="ssss")
+all_book = books.objects.all()
+print(all_book)
+<QuerySet [<books: books object (1)>, <books: books object (2)>, <books: books object (3)>, <books: books object (4)>, <books: books object (5)>]>
+
+2)Create 5 different authors: Jane Austen, Emily Dickinson, Fyodor Dostoevsky, William Shakespeare, Lau Tzu
+new_author = author.objects.create(first_name="Jane",last_name="Austen")
+new_author = author.objects.create(first_name="Emily",last_name="Dickinson")
+new_author = author.objects.create(first_name="Fyodor",last_name="Dostoevsky")
+new_author = author.objects.create(first_name="William",last_name="Shakespeare")
+new_author = author.objects.create(first_name="Lau",last_name="Tzu")
+all_author = author.objects.all()
+print(all_author)
+<QuerySet [<author: author object (1)>, <author: author object (2)>, <author: author object (3)>, <author: author object (4)>, <author: author object (5)>]>
+
+3)Change the name of the C Sharp book to C#
+c = books.objects.get(id=1)
+c.title = "C#"
+c.save()
+
+4)Change the first name of the 4th author to Bill
+c = author.objects.get(id=4)
+c.first_name = "Bill"
+c.save()
+
+5)Assign the first author to the first 2 books
+this_author = author.objects.get(id=1)	
+this_book = books.objects.get(id=1)	
+this_author.books.add(this_book)		
+this_author = author.objects.get(id=1)
+this_book = books.objects.get(id=2)
+this_author.books.add(this_book)
+
+6)Assign the second author to the first 3 books
+this_author = author.objects.get(id=2)	
+this_book = books.objects.get(id=1)	
+this_author.books.add(this_book)		
+this_author = author.objects.get(id=2)
+this_book = books.objects.get(id=2)
+this_author.books.add(this_book)
+this_author = author.objects.get(id=2)
+this_book = books.objects.get(id=3)
+this_author.books.add(this_book)
+
+7)Assign the third author to the first 4 books
+this_author = author.objects.get(id=3)	
+this_book = books.objects.get(id=1)	
+this_author.books.add(this_book)		
+this_author = author.objects.get(id=3)
+this_book = books.objects.get(id=2)
+this_author.books.add(this_book)
+this_author = author.objects.get(id=3)
+this_book = books.objects.get(id=3)
+this_author.books.add(this_book)
+this_author = author.objects.get(id=3)
+this_book = books.objects.get(id=4)
+this_author.books.add(this_book)
+
+8)Assign the fourth author to the first 5 books (or in other words, all the books)
+this_author = author.objects.get(id=4)	
+this_book = books.objects.get(id=1)	
+this_author.books.add(this_book)		
+this_author = author.objects.get(id=4)
+this_book = books.objects.get(id=2)
+this_author.books.add(this_book)
+this_author = author.objects.get(id=4)
+this_book = books.objects.get(id=3)
+this_author.books.add(this_book)
+this_author = author.objects.get(id=4)
+this_book = books.objects.get(id=4)
+this_author.books.add(this_book)
+this_author = author.objects.get(id=4)
+this_book = books.objects.get(id=5)
+this_author.books.add(this_book)
+
+9)Retrieve all the authors for the 3rd book
+this_book = books.objects.get(id=3)
+this_book.book_author.all()
+<QuerySet [<author: author object (2)>, <author: author object (3)>, <author: author object (4)>]>
+
+10)Remove the first author of the 3rd book
+this_book = books.objects.get(id=3)
+this_author = author.objects.get(id=1)
+this_book.book_author.remove(this_author)
+
+11)Add the 5th author as one of the authors of the 2nd book
+this_author = author.objects.get(id=5)
+this_book = books.objects.get(id=2)
+this_author.books.add(this_book)
+
+12) Find all the books that the 3rd author is part of
+this_author = author.objects.get(id=3)
+this_author.books.all()
+<QuerySet [<books: books object (1)>, <books: books object (2)>, <books: books object (3)>, <books: books object (4)>]>
+
+13)Find all the authors that contributed to the 5th book
+this_book = books.objects.get(id=5)
+this_book.book_author.all()
+<QuerySet [<author: author object (4)>]>

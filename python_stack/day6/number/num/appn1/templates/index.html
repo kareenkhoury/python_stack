@@ -3,17 +3,20 @@
 <head>
     <title>Guessing Game</title>
 </head>
-<body>
+<body style="margin:0 auto; text-align:center;">
     <h1>Guess the Number</h1>
     
-   
-    <p>{{ message }}</p>
-   
-    
-    <form method="post" action="/check_guess">
+    <form method="post" action="/check_guess" style="display: flex;
+    flex-direction: column;
+    width: 200px;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items:center;
+    margin: 0 auto;">
         {% csrf_token %}
         <label>Enter your guess (1-100):</label>
         <input type="number"  name="guess">
+        {{request.session.result|safe}}
         <button type="submit">Submit</button>
     </form>
 </body>

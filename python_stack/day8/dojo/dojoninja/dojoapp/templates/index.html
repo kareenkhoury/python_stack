@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="forms">
+        <div>
+    <h1>Add a Dojo</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text"  name="name" required><br><br>
+        
+        <label for="city">City:</label>
+        <input type="text"  name="city" required><br><br>
+        
+        <label for="state">State:</label>
+        <input type="text" name="state" required><br><br>
+        
+        <input type="hidden" name="add_dojo" value="dojo">
+        <input type="submit" name="add_dojo" value="Add">
+
+    </form>
+</div>
+<div>
+    <h1>Add a Ninja</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input type="text"  name="first_name" required><br><br>
+        
+        <label for="last_name">Last Name:</label>
+        <input type="text"  name="last_name" required><br><br>
+         
+        <label>Dojo: </label>
+        <select name="dn">
+            {% for dojo in dojos %}
+            <option value="{{ dojo.id }}">{{ dojo.name }}</option>
+            {% endfor %}
+        </select><br><br>
+        <input type="hidden" name="add_ninja" value="ninja">
+        <input type="submit" name="add_ninja" value="Add">
+
+    </form>
+
+</div>
+</div>
+<hr>
+<div class="add">
+    <h1>All the Dojos</h1>
+    <ul class="list">
+        {% for dojo in dojos %}
+            <li>{{ dojo.name }} 
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="delete_dojo" value="dojo">
+                    <input type="submit" name="delete_dojo" value="delete">
+                </form>
+                <ul>
+                    {% for ninja in dojo.dojon.all %}
+                        <li><em>{{ ninja.first_name }}</em></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+<style>
+    .forms{
+        display: flex;
+        justify-content: space-around;
+    }
+    .add{
+        text-align: center;
+    }
+
+ 
+
+</style>
+</html>

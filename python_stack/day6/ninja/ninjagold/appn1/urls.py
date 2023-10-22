@@ -1,9 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    url('', views.index),
-    url('process_money', views.process_money),
-     url('/', views.result),
-
+    path('', views.index),
+    path('process_money', views.process_money),
 ]

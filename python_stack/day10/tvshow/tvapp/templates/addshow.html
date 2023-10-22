@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/shows/{id}" method="post">
+        {%csrf_token%}
+        <h2>Add a New Show</h2>
+        <p>Title <input type="text" name="title"></p>
+        <p>Network <input type="text" name="network"></p>
+        <p>Release Date <input type="date" name="releasedate"></p>
+        <p>Description <input type="text" name="description"></p>
+
+        <p><input type="Submit" value="Create"></p>
+    </form>
+</body>
+</html>
